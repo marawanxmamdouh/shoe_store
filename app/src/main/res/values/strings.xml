@@ -9,4 +9,7 @@
     <string name="welcome_header">Follow latest \n style shoes</string>
     <string name="welcome_description">There are many beautiful and attractive\nornamental plants to decorate your room</string>
     <string name="welcome">Welcome</string>
+    <string name="instruction_description">Explore many products\nChoose and checkout\nGet it delivered</string>
+    <string name="instruction_header">online store</string>
+    <string name="finish">Finish</string>
 </resources>
