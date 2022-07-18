@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
 import dev.marawanxmamdouh.shoestore.databinding.FragmentLoginBinding
 
 class LoginFragment : Fragment() {
@@ -22,7 +23,9 @@ class LoginFragment : Fragment() {
 
         // Get the ViewModel
         viewModel = ViewModelProvider(this)[LoginViewModel::class.java]
-
+        binding.button3.setOnClickListener {
+            it.findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToWelcomeFragment())
+        }
 
         return binding.root
     }
