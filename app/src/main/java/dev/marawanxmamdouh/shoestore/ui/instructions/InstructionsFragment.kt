@@ -1,4 +1,4 @@
-package dev.marawanxmamdouh.shoestore.ui
+package dev.marawanxmamdouh.shoestore.ui.instructions
 
 import android.os.Bundle
 import android.view.LayoutInflater

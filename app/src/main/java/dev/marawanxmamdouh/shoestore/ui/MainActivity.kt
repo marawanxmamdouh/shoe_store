@@ -1,4 +1,4 @@
-package dev.marawanxmamdouh.shoestore
+package dev.marawanxmamdouh.shoestore.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
