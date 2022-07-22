@@ -20,6 +20,10 @@ class ShoeList : Fragment() {
     ): View {
         binding = FragmentShoeListBinding.inflate(inflater, container, false)
 
+        binding.fab.setOnClickListener {
+            it.findNavController().navigate(ShoeListDirections.actionShoeListToShoeDetail())
+        }
+
         return binding.root
     }
 
