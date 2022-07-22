@@ -23,7 +23,7 @@ class ShoeDetail : Fragment() {
     ): View {
         binding = FragmentShoeDetailBinding.inflate(inflater, container, false)
 
-        binding.btnCancelAddNewShoe.setOnClickListener {
+        binding.btnSaveAddNewShoe.setOnClickListener {
             it.findNavController()
                 .navigate(
                     ShoeDetailDirections.actionShoeDetailToShoeList(
@@ -35,7 +35,7 @@ class ShoeDetail : Fragment() {
                 )
         }
 
-        binding.btnSaveAddNewShoe.setOnClickListener {
+        binding.btnCancelAddNewShoe.setOnClickListener {
             it.findNavController()
                 .navigate(ShoeDetailDirections.actionShoeDetailToShoeList("", "", "", ""))
         }
