@@ -14,4 +14,8 @@
     <string name="finish">Finish</string>
     <string name="fab_content_desc">add shoe</string>
     <string name="logout">Logout</string>
+    <string name="company">Company</string>
+    <string name="size">Size</string>
+    <string name="description">Description</string>
+    <string name="shoe_name">Shoe Name</string>
 </resources>
