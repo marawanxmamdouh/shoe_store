@@ -45,5 +45,9 @@
         android:id="@+id/shoeDetail"
         android:name="dev.marawanxmamdouh.shoestore.ui.shoedetail.ShoeDetail"
         android:label="@string/add_new_shoe"
-        tools:layout="@layout/fragment_shoe_detail" />
+        tools:layout="@layout/fragment_shoe_detail" >
+        <action
+            android:id="@+id/action_shoeDetail_to_shoeList"
+            app:destination="@id/shoeList" />
+    </fragment>
 </navigation>
