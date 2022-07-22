@@ -24,11 +24,20 @@ class ShoeDetail : Fragment() {
         binding = FragmentShoeDetailBinding.inflate(inflater, container, false)
 
         binding.btnCancelAddNewShoe.setOnClickListener {
-            it.findNavController().navigate(ShoeDetailDirections.actionShoeDetailToShoeList())
+            it.findNavController()
+                .navigate(
+                    ShoeDetailDirections.actionShoeDetailToShoeList(
+                        binding.etShoeName.text.toString(),
+                        binding.etCompanyName.text.toString(),
+                        binding.etShoeSize.text.toString(),
+                        binding.etShoeDescription.text.toString()
+                    )
+                )
         }
 
         binding.btnSaveAddNewShoe.setOnClickListener {
-            it.findNavController().navigate(ShoeDetailDirections.actionShoeDetailToShoeList())
+            it.findNavController()
+                .navigate(ShoeDetailDirections.actionShoeDetailToShoeList("", "", "", ""))
         }
 
         binding.ivAddShoe.setOnClickListener {
