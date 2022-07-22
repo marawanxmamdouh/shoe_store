@@ -19,7 +19,11 @@ class InstructionsFragment : Fragment() {
         binding = FragmentInstructionsBinding.inflate(inflater, container, false)
 
         binding.btnFinish.setOnClickListener {
-            it.findNavController().navigate(InstructionsFragmentDirections.actionInstructionsFragmentToShoeList())
+            it.findNavController().navigate(
+                InstructionsFragmentDirections.actionInstructionsFragmentToShoeList(
+                    "", "", "", ""
+                )
+            )
         }
         return binding.root
     }
