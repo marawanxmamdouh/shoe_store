@@ -25,7 +25,7 @@
         app:strokeWidth="5dp" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/etShoeName"
+        android:id="@+id/tfShoeName"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -38,12 +38,13 @@
         app:layout_constraintTop_toBottomOf="@+id/ivAddShoe">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etShoeName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/etCompanyName"
+        android:id="@+id/tfCompanyName"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -51,17 +52,18 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:hint="@string/company"
-        app:layout_constraintEnd_toStartOf="@+id/etShoeSize"
+        app:layout_constraintEnd_toStartOf="@+id/tfShoeSize"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etShoeName">
+        app:layout_constraintTop_toBottomOf="@+id/tfShoeName">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etCompanyName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/etShoeSize"
+        android:id="@+id/tfShoeSize"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -72,17 +74,18 @@
         app:layout_constraintDimensionRatio="w,3:2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/etCompanyName"
-        app:layout_constraintTop_toBottomOf="@+id/etShoeName">
+        app:layout_constraintStart_toEndOf="@+id/tfCompanyName"
+        app:layout_constraintTop_toBottomOf="@+id/tfShoeName">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etShoeSize"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="number" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/etShoeDescription"
+        android:id="@+id/tfShoeDescription"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -92,9 +95,10 @@
         android:hint="@string/description"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etShoeSize">
+        app:layout_constraintTop_toBottomOf="@+id/tfShoeSize">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etShoeDescription"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -110,7 +114,7 @@
         app:layout_constraintEnd_toStartOf="@+id/btnCancelAddNewShoe"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etShoeDescription" />
+        app:layout_constraintTop_toBottomOf="@+id/tfShoeDescription" />
 
     <Button
         android:id="@+id/btnCancelAddNewShoe"
@@ -123,6 +127,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/btnSaveAddNewShoe"
-        app:layout_constraintTop_toBottomOf="@+id/etShoeDescription" />
+        app:layout_constraintTop_toBottomOf="@+id/tfShoeDescription" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
