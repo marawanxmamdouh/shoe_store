@@ -2,6 +2,7 @@ package dev.marawanxmamdouh.shoestore.ui.shoelist
 
 import android.os.Bundle
 import android.view.*
+import android.widget.Toast
 import androidx.core.view.MenuHost
 import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
@@ -19,6 +20,10 @@ class ShoeList : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentShoeListBinding.inflate(inflater, container, false)
+
+        // get the arguments from ShoeDetailFragment
+        val args = ShoeListArgs.fromBundle(requireArguments())
+        Toast.makeText(context, "shoeName = ${args.shoeName}, company = ${args.company}, size = ${args.size}, description = ${args.description}", Toast.LENGTH_SHORT).show()
 
         binding.fab.setOnClickListener {
             it.findNavController().navigate(ShoeListDirections.actionShoeListToShoeDetail())
