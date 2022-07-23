@@ -1,5 +1,6 @@
 package dev.marawanxmamdouh.shoestore.ui.shoelist
 
+import android.content.res.Resources
 import android.os.Bundle
 import android.view.*
 import android.widget.ImageView
@@ -57,7 +58,7 @@ class ShoeList : Fragment() {
             val layout = LinearLayout(context)
             layout.orientation = LinearLayout.VERTICAL
             val imageView = ImageView(this.context)
-            val layoutParams = LinearLayout.LayoutParams(1000, 1000)
+            val layoutParams = LinearLayout.LayoutParams(150.px, 150.px)
             imageView.layoutParams = layoutParams
             imageView.setImageResource(R.drawable.shoe)
             val tvShoeName = TextView(this.context)
@@ -97,4 +98,8 @@ class ShoeList : Fragment() {
             }
         }, viewLifecycleOwner, Lifecycle.State.RESUMED)
     }
+
+    // convert dp to px
+    private val Int.px get() = (this * Resources.getSystem().displayMetrics.density).toInt()
+
 }
