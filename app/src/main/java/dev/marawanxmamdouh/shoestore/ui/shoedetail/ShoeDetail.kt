@@ -9,20 +9,24 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import dev.marawanxmamdouh.shoestore.databinding.FragmentShoeDetailBinding
 import dev.marawanxmamdouh.shoestore.models.Shoe
+import dev.marawanxmamdouh.shoestore.ui.SharedViewModel
 
 
 class ShoeDetail : Fragment() {
 
     private lateinit var binding: FragmentShoeDetailBinding
+    private lateinit var sharedViewModel: SharedViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentShoeDetailBinding.inflate(inflater, container, false)
+        sharedViewModel = ViewModelProvider(requireActivity())[SharedViewModel::class.java]
 
         binding.btnSaveAddNewShoe.setOnClickListener {
             it.findNavController()
