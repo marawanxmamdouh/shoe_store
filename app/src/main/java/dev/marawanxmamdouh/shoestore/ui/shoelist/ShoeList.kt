@@ -40,8 +40,10 @@ class ShoeList : Fragment() {
             Toast.LENGTH_SHORT
         ).show()
 
-        // Update the UI with the new shoe data from the arguments
-        addNewShoeToLayout(args)
+        sharedViewModel.shoeList.observe(viewLifecycleOwner) {
+            // Update the UI with the new shoe data from the arguments
+            addNewShoeToLayout(it)
+        }
 
         binding.fab.setOnClickListener {
             it.findNavController().navigate(ShoeListDirections.actionShoeListToShoeDetail())
@@ -50,27 +52,29 @@ class ShoeList : Fragment() {
         return binding.root
     }
 
-    private fun addNewShoeToLayout(args: ShoeListArgs) {
-        val layout = LinearLayout(context)
-        layout.orientation = LinearLayout.VERTICAL
-        val imageView = ImageView(this.context)
-        val layoutParams = LinearLayout.LayoutParams(1000, 1000)
-        imageView.layoutParams = layoutParams
-        imageView.setImageResource(R.drawable.shoe)
-        val tvShoeName = TextView(this.context)
-        tvShoeName.text = args.shoe.name
-        val tvCompany = TextView(this.context)
-        tvCompany.text = args.shoe.company
-        val tvSize = TextView(this.context)
-        tvSize.text = args.shoe.size.toString()
-        val tvDescription = TextView(this.context)
-        tvDescription.text = args.shoe.description
-        layout.addView(imageView)
-        layout.addView(tvShoeName)
-        layout.addView(tvCompany)
-        layout.addView(tvSize)
-        layout.addView(tvDescription)
-        binding.llShoeList.addView(layout)
+    private fun addNewShoeToLayout(shoeList: MutableList<Shoe>) {
+        for (shoe in shoeList) {
+            val layout = LinearLayout(context)
+            layout.orientation = LinearLayout.VERTICAL
+            val imageView = ImageView(this.context)
+            val layoutParams = LinearLayout.LayoutParams(1000, 1000)
+            imageView.layoutParams = layoutParams
+            imageView.setImageResource(R.drawable.shoe)
+            val tvShoeName = TextView(this.context)
+            tvShoeName.text = shoe.name
+            val tvCompany = TextView(this.context)
+            tvCompany.text = shoe.company
+            val tvSize = TextView(this.context)
+            tvSize.text = shoe.size.toString()
+            val tvDescription = TextView(this.context)
+            tvDescription.text = shoe.description
+            layout.addView(imageView)
+            layout.addView(tvShoeName)
+            layout.addView(tvCompany)
+            layout.addView(tvSize)
+            layout.addView(tvDescription)
+            binding.llShoeList.addView(layout)
+        }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
