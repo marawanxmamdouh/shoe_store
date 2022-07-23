@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import dev.marawanxmamdouh.shoestore.databinding.FragmentInstructionsBinding
+import dev.marawanxmamdouh.shoestore.models.Shoe
 
 class InstructionsFragment : Fragment() {
 
@@ -21,7 +22,7 @@ class InstructionsFragment : Fragment() {
         binding.btnFinish.setOnClickListener {
             it.findNavController().navigate(
                 InstructionsFragmentDirections.actionInstructionsFragmentToShoeList(
-                    "", "", "", ""
+                    Shoe("",0.0,"","",0)
                 )
             )
         }

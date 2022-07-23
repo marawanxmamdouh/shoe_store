@@ -11,6 +11,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import dev.marawanxmamdouh.shoestore.databinding.FragmentShoeDetailBinding
+import dev.marawanxmamdouh.shoestore.models.Shoe
 
 
 class ShoeDetail : Fragment() {
@@ -24,20 +25,18 @@ class ShoeDetail : Fragment() {
         binding = FragmentShoeDetailBinding.inflate(inflater, container, false)
 
         binding.btnSaveAddNewShoe.setOnClickListener {
+            crateNewShoe()
             it.findNavController()
                 .navigate(
                     ShoeDetailDirections.actionShoeDetailToShoeList(
-                        binding.etShoeName.text.toString(),
-                        binding.etCompanyName.text.toString(),
-                        binding.etShoeSize.text.toString(),
-                        binding.etShoeDescription.text.toString()
+                        crateNewShoe()
                     )
                 )
         }
 
         binding.btnCancelAddNewShoe.setOnClickListener {
             it.findNavController()
-                .navigate(ShoeDetailDirections.actionShoeDetailToShoeList("", "", "", ""))
+                .navigate(ShoeDetailDirections.actionShoeDetailToShoeList(Shoe("",0.0,"","",0)))
         }
 
         binding.ivAddShoe.setOnClickListener {
@@ -45,6 +44,16 @@ class ShoeDetail : Fragment() {
         }
 
         return binding.root
+    }
+
+    private fun crateNewShoe(): Shoe {
+        return Shoe(
+            binding.etShoeName.text.toString(),
+            binding.etShoeSize.text.toString().toDouble(),
+            binding.etCompanyName.text.toString(),
+            binding.etShoeDescription.text.toString(),
+            binding.ivAddShoe.tag as? Int ?: 0,
+        )
     }
 
     // open gallery to select image
