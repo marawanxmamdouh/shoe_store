@@ -14,11 +14,15 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import dev.marawanxmamdouh.shoestore.R
 import dev.marawanxmamdouh.shoestore.databinding.FragmentShoeListBinding
+import dev.marawanxmamdouh.shoestore.models.Shoe
+import dev.marawanxmamdouh.shoestore.ui.SharedViewModel
+
 
 class ShoeList : Fragment() {
 
     private lateinit var binding: FragmentShoeListBinding
     private lateinit var viewModel: ShoeListViewModel
+    private lateinit var sharedViewModel: SharedViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -26,6 +30,7 @@ class ShoeList : Fragment() {
     ): View {
         binding = FragmentShoeListBinding.inflate(inflater, container, false)
         viewModel = ViewModelProvider(this)[ShoeListViewModel::class.java]
+        sharedViewModel = ViewModelProvider(requireActivity())[SharedViewModel::class.java]
 
         // get the arguments from ShoeDetailFragment
         val args = ShoeListArgs.fromBundle(requireArguments())
