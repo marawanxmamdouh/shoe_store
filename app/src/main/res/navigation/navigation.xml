@@ -42,14 +42,9 @@
         <action
             android:id="@+id/action_shoeList_to_shoeDetail"
             app:destination="@id/shoeDetail" />
-        <argument android:name="shoeName"
-            app:argType="string" />
-        <argument android:name="company"
-            app:argType="string" />
-        <argument android:name="size"
-            app:argType="string" />
-        <argument android:name="description"
-            app:argType="string" />
+        <argument
+            android:name="shoe"
+            app:argType="dev.marawanxmamdouh.shoestore.models.Shoe" />
     </fragment>
     <fragment
         android:id="@+id/shoeDetail"
