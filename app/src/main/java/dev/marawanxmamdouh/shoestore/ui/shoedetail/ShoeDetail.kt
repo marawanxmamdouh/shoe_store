@@ -25,7 +25,6 @@ class ShoeDetail : Fragment() {
         binding = FragmentShoeDetailBinding.inflate(inflater, container, false)
 
         binding.btnSaveAddNewShoe.setOnClickListener {
-            crateNewShoe()
             it.findNavController()
                 .navigate(
                     ShoeDetailDirections.actionShoeDetailToShoeList(
@@ -36,7 +35,7 @@ class ShoeDetail : Fragment() {
 
         binding.btnCancelAddNewShoe.setOnClickListener {
             it.findNavController()
-                .navigate(ShoeDetailDirections.actionShoeDetailToShoeList(Shoe("",0.0,"","",0)))
+                .navigate(ShoeDetailDirections.actionShoeDetailToShoeList(Shoe("", 0.0, "", "", 0)))
         }
 
         binding.ivAddShoe.setOnClickListener {
@@ -49,11 +48,15 @@ class ShoeDetail : Fragment() {
     private fun crateNewShoe(): Shoe {
         return Shoe(
             binding.etShoeName.text.toString(),
-            binding.etShoeSize.text.toString().toDouble(),
+            parseDouble(binding.etShoeSize.text.toString()),
             binding.etCompanyName.text.toString(),
             binding.etShoeDescription.text.toString(),
             binding.ivAddShoe.tag as? Int ?: 0,
         )
+    }
+
+    private fun parseDouble(s: String?): Double {
+        return if (s == null || s.isEmpty()) 0.0 else s.toDouble()
     }
 
     // open gallery to select image
