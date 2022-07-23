@@ -50,13 +50,15 @@ class ShoeDetail : Fragment() {
     }
 
     private fun crateNewShoe(): Shoe {
-        return Shoe(
+        val shoe = Shoe(
             binding.etShoeName.text.toString(),
             parseDouble(binding.etShoeSize.text.toString()),
             binding.etCompanyName.text.toString(),
             binding.etShoeDescription.text.toString(),
             binding.ivAddShoe.tag as? Int ?: 0,
         )
+        sharedViewModel.addShoe(shoe)
+        return shoe
     }
 
     private fun parseDouble(s: String?): Double {
