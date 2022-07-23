@@ -7,6 +7,7 @@ import androidx.core.view.MenuHost
 import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import dev.marawanxmamdouh.shoestore.R
 import dev.marawanxmamdouh.shoestore.databinding.FragmentShoeListBinding
@@ -14,12 +15,14 @@ import dev.marawanxmamdouh.shoestore.databinding.FragmentShoeListBinding
 class ShoeList : Fragment() {
 
     private lateinit var binding: FragmentShoeListBinding
+    private lateinit var viewModel: ShoeListViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentShoeListBinding.inflate(inflater, container, false)
+        viewModel = ViewModelProvider(this)[ShoeListViewModel::class.java]
 
         // get the arguments from ShoeDetailFragment
         val args = ShoeListArgs.fromBundle(requireArguments())
