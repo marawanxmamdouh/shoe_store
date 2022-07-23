@@ -2,6 +2,9 @@ package dev.marawanxmamdouh.shoestore.ui.shoelist
 
 import android.os.Bundle
 import android.view.*
+import android.widget.ImageView
+import android.widget.LinearLayout
+import android.widget.TextView
 import android.widget.Toast
 import androidx.core.view.MenuHost
 import androidx.core.view.MenuProvider
@@ -26,13 +29,43 @@ class ShoeList : Fragment() {
 
         // get the arguments from ShoeDetailFragment
         val args = ShoeListArgs.fromBundle(requireArguments())
-        Toast.makeText(context, "shoeName = ${args.shoeName}, company = ${args.company}, size = ${args.size}, description = ${args.description}", Toast.LENGTH_SHORT).show()
+        Toast.makeText(
+            context,
+            "shoeName = ${args.shoe.name}, company = ${args.shoe.company}, size = ${args.shoe.size}, description = ${args.shoe.description}",
+            Toast.LENGTH_SHORT
+        ).show()
+
+        // Update the UI with the new shoe data from the arguments
+        addNewShoeToLayout(args)
 
         binding.fab.setOnClickListener {
             it.findNavController().navigate(ShoeListDirections.actionShoeListToShoeDetail())
         }
 
         return binding.root
+    }
+
+    private fun addNewShoeToLayout(args: ShoeListArgs) {
+        val layout = LinearLayout(context)
+        layout.orientation = LinearLayout.VERTICAL
+        val imageView = ImageView(this.context)
+        val layoutParams = LinearLayout.LayoutParams(1000, 1000)
+        imageView.layoutParams = layoutParams
+        imageView.setImageResource(R.drawable.shoe)
+        val tvShoeName = TextView(this.context)
+        tvShoeName.text = args.shoe.name
+        val tvCompany = TextView(this.context)
+        tvCompany.text = args.shoe.company
+        val tvSize = TextView(this.context)
+        tvSize.text = args.shoe.size.toString()
+        val tvDescription = TextView(this.context)
+        tvDescription.text = args.shoe.description
+        layout.addView(imageView)
+        layout.addView(tvShoeName)
+        layout.addView(tvCompany)
+        layout.addView(tvSize)
+        layout.addView(tvDescription)
+        binding.llShoeList.addView(layout)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
