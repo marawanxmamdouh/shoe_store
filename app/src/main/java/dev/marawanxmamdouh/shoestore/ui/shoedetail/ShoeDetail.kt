@@ -54,22 +54,6 @@ class ShoeDetail : Fragment() {
         return binding.root
     }
 
-    private fun crateNewShoe(): Shoe {
-        val shoe = Shoe(
-            binding.etShoeName.text.toString(),
-            parseDouble(binding.etShoeSize.text.toString()),
-            binding.etCompanyName.text.toString(),
-            binding.etShoeDescription.text.toString(),
-            binding.ivAddShoe.tag as? Int ?: 0,
-        )
-        sharedViewModel.addShoe(shoe)
-        return shoe
-    }
-
-    private fun parseDouble(s: String?): Double {
-        return if (s == null || s.isEmpty()) 0.0 else s.toDouble()
-    }
-
     // open gallery to select image
     private fun openGallery() {
         val intent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI)
