@@ -34,9 +34,7 @@ class ShoeDetail : Fragment() {
                 sharedViewModel.addShoe()
                 it.findNavController()
                     .navigate(
-                        ShoeDetailDirections.actionShoeDetailToShoeList(
-                            sharedViewModel.shoe
-                        )
+                        ShoeDetailDirections.actionShoeDetailToShoeList()
                     )
             }else{
                 Toast.makeText(context, "Please fill all the fields", Toast.LENGTH_SHORT).show()
@@ -45,7 +43,7 @@ class ShoeDetail : Fragment() {
 
         binding.btnCancelAddNewShoe.setOnClickListener {
             it.findNavController()
-                .navigate(ShoeDetailDirections.actionShoeDetailToShoeList(sharedViewModel.createEmptyShoe()))
+                .navigate(ShoeDetailDirections.actionShoeDetailToShoeList())
         }
 
         binding.ivAddShoe.setOnClickListener {
