@@ -19,7 +19,7 @@ import dev.marawanxmamdouh.shoestore.ui.SharedViewModel
 class ShoeDetail : Fragment() {
 
     private lateinit var binding: FragmentShoeDetailBinding
-    private lateinit var viewModel: SharedViewModel
+    private lateinit var viewModel: ShoeDetailViewModel
     private lateinit var sharedViewModel: SharedViewModel
 
 
@@ -28,7 +28,7 @@ class ShoeDetail : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentShoeDetailBinding.inflate(inflater, container, false)
-        viewModel = ViewModelProvider(this)[SharedViewModel::class.java]
+        viewModel = ViewModelProvider(this)[ShoeDetailViewModel::class.java]
         sharedViewModel = ViewModelProvider(requireActivity())[SharedViewModel::class.java]
 
         binding.btnSaveAddNewShoe.setOnClickListener {
@@ -48,6 +48,8 @@ class ShoeDetail : Fragment() {
         binding.ivAddShoe.setOnClickListener {
             openGallery()
         }
+
+        binding.viewModel = viewModel
 
         return binding.root
     }

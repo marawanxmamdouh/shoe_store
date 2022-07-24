@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
+        <variable
+            name="viewModel"
+            type="dev.marawanxmamdouh.shoestore.ui.shoedetail.ShoeDetailViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
