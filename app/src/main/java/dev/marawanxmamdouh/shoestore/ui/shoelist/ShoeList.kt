@@ -102,6 +102,7 @@ class ShoeList : Fragment() {
                 return when (menuItem.itemId) {
                     R.id.miLogout -> {
                         view.findNavController().navigate(R.id.loginFragment)
+                        sharedViewModel.clearShoeList()
                         true
                     }
                     else -> false

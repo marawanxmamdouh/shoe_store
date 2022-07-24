@@ -29,4 +29,9 @@ class SharedViewModel : ViewModel() {
     fun checkIfNotEmptyShoe(): Boolean {
         return shoe.name.isNotEmpty() && shoe.size != 0.0 && shoe.company.isNotEmpty() && shoe.description.isNotEmpty()
     }
+
+    fun clearShoeList() {
+        _shoeList.value?.clear()
+        _shoeList.value = _shoeList.value
+    }
 }
