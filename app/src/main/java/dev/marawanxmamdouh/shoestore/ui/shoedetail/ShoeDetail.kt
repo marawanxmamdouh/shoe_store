@@ -19,13 +19,16 @@ import dev.marawanxmamdouh.shoestore.ui.SharedViewModel
 class ShoeDetail : Fragment() {
 
     private lateinit var binding: FragmentShoeDetailBinding
+    private lateinit var viewModel: SharedViewModel
     private lateinit var sharedViewModel: SharedViewModel
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentShoeDetailBinding.inflate(inflater, container, false)
+        viewModel = ViewModelProvider(this)[SharedViewModel::class.java]
         sharedViewModel = ViewModelProvider(requireActivity())[SharedViewModel::class.java]
 
         binding.btnSaveAddNewShoe.setOnClickListener {
