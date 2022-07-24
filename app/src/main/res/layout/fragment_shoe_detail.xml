@@ -7,6 +7,9 @@
         <variable
             name="viewModel"
             type="dev.marawanxmamdouh.shoestore.ui.shoedetail.ShoeDetailViewModel" />
+        <variable
+            name="sharedViewModel"
+            type="dev.marawanxmamdouh.shoestore.ui.SharedViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

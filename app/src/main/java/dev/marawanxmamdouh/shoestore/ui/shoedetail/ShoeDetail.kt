@@ -12,7 +12,6 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import dev.marawanxmamdouh.shoestore.databinding.FragmentShoeDetailBinding
-import dev.marawanxmamdouh.shoestore.models.Shoe
 import dev.marawanxmamdouh.shoestore.ui.SharedViewModel
 
 
@@ -50,6 +49,7 @@ class ShoeDetail : Fragment() {
         }
 
         binding.viewModel = viewModel
+        binding.sharedViewModel = sharedViewModel
 
         return binding.root
     }
