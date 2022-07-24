@@ -19,4 +19,9 @@ class SharedViewModel: ViewModel() {
         _shoeList.value?.add(shoe)
         _shoeList.value = _shoeList.value
     }
+
+    fun createEmptyShoe(): Shoe {
+        shoe = Shoe("", 0.0, "", "", 0)
+        return shoe
+    }
 }

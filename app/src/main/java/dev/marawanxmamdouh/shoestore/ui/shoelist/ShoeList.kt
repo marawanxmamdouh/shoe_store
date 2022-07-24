@@ -48,6 +48,7 @@ class ShoeList : Fragment() {
 
         binding.fab.setOnClickListener {
             it.findNavController().navigate(ShoeListDirections.actionShoeListToShoeDetail())
+            sharedViewModel.createEmptyShoe()
         }
 
         return binding.root
