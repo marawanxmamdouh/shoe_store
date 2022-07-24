@@ -6,7 +6,6 @@ import android.view.*
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
-import android.widget.Toast
 import androidx.core.view.MenuHost
 import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
@@ -33,14 +32,6 @@ class ShoeList : Fragment() {
         viewModel = ViewModelProvider(this)[ShoeListViewModel::class.java]
         sharedViewModel = ViewModelProvider(requireActivity())[SharedViewModel::class.java]
 
-        // get the arguments from ShoeDetailFragment
-        val args = ShoeListArgs.fromBundle(requireArguments())
-        Toast.makeText(
-            context,
-            "shoeName = ${args.shoe.name}, company = ${args.shoe.company}, size = ${args.shoe.size}, description = ${args.shoe.description}",
-            Toast.LENGTH_SHORT
-        ).show()
-
         sharedViewModel.shoeList.observe(viewLifecycleOwner) {
             // Update the UI with the new shoe data from the arguments
             addNewShoeToLayout(it)
@@ -56,27 +47,46 @@ class ShoeList : Fragment() {
 
     private fun addNewShoeToLayout(shoeList: MutableList<Shoe>) {
         for (shoe in shoeList) {
-            val layout = LinearLayout(context)
-            layout.orientation = LinearLayout.VERTICAL
-            val imageView = ImageView(this.context)
-            val layoutParams = LinearLayout.LayoutParams(150.px, 150.px)
-            imageView.layoutParams = layoutParams
-            imageView.setImageResource(R.drawable.shoe)
-            val tvShoeName = TextView(this.context)
-            tvShoeName.text = shoe.name
-            val tvCompany = TextView(this.context)
-            tvCompany.text = shoe.company
-            val tvSize = TextView(this.context)
-            tvSize.text = shoe.size.toString()
-            val tvDescription = TextView(this.context)
-            tvDescription.text = shoe.description
-            layout.addView(imageView)
-            layout.addView(tvShoeName)
-            layout.addView(tvCompany)
-            layout.addView(tvSize)
-            layout.addView(tvDescription)
+            val layout = createLinearLayout()
+            layout.addView(createImageView())
+            layout.addView(createTextView(shoe.name))
+            layout.addView(createTextView(shoe.size.toString()))
+            layout.addView(createTextView(shoe.company))
+            layout.addView(createTextView(shoe.description))
             binding.llShoeList.addView(layout)
         }
+    }
+
+    private fun createImageView(): ImageView {
+        val imageView = ImageView(this.context)
+        val layoutParams = LinearLayout.LayoutParams(150.px, 150.px)
+        imageView.layoutParams = layoutParams
+        imageView.setImageResource(R.drawable.shoe)
+        return imageView
+    }
+
+    private fun createLinearLayout(): LinearLayout {
+        val layout = LinearLayout(context)
+        layout.orientation = LinearLayout.VERTICAL
+        val params = LinearLayout.LayoutParams(
+            LinearLayout.LayoutParams.WRAP_CONTENT,
+            LinearLayout.LayoutParams.WRAP_CONTENT
+        ).apply {
+            weight = 1.0f
+            gravity = Gravity.CENTER_HORIZONTAL
+        }
+        layout.layoutParams = params
+        layout.setPadding(0, 16.px, 0, 16.px)
+        return layout
+    }
+
+    private fun createTextView(text: String): TextView {
+        val tv = TextView(this.context)
+        tv.text = text
+        tv.textSize = 20.0f
+        tv.setPadding(0, 8.px, 0, 8.px)
+        tv.gravity = Gravity.CENTER_HORIZONTAL
+        return tv
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
