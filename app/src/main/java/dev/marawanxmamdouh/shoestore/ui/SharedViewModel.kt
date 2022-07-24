@@ -16,7 +16,7 @@ class SharedViewModel : ViewModel() {
         _shoeList.value = ArrayList()
     }
 
-    fun addShoe(shoe: Shoe){
+    fun addShoe() {
         _shoeList.value?.add(shoe)
         _shoeList.value = _shoeList.value
     }
@@ -24,5 +24,9 @@ class SharedViewModel : ViewModel() {
     fun createEmptyShoe(): Shoe {
         shoe = Shoe("", 0.0, "", "", 0)
         return shoe
+    }
+
+    fun checkIfNotEmptyShoe(): Boolean {
+        return shoe.name.isNotEmpty() && shoe.size != 0.0 && shoe.company.isNotEmpty() && shoe.description.isNotEmpty()
     }
 }

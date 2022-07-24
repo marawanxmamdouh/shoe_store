@@ -7,6 +7,7 @@ import android.provider.MediaStore
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -31,17 +32,22 @@ class ShoeDetail : Fragment() {
         sharedViewModel = ViewModelProvider(requireActivity())[SharedViewModel::class.java]
 
         binding.btnSaveAddNewShoe.setOnClickListener {
-            it.findNavController()
-                .navigate(
-                    ShoeDetailDirections.actionShoeDetailToShoeList(
-                        crateNewShoe()
+            if (sharedViewModel.checkIfNotEmptyShoe()) {
+                sharedViewModel.addShoe()
+                it.findNavController()
+                    .navigate(
+                        ShoeDetailDirections.actionShoeDetailToShoeList(
+                            sharedViewModel.shoe
+                        )
                     )
-                )
+            }else{
+                Toast.makeText(context, "Please fill all the fields", Toast.LENGTH_SHORT).show()
+            }
         }
 
         binding.btnCancelAddNewShoe.setOnClickListener {
             it.findNavController()
-                .navigate(ShoeDetailDirections.actionShoeDetailToShoeList(Shoe("", 0.0, "", "", 0)))
+                .navigate(ShoeDetailDirections.actionShoeDetailToShoeList(sharedViewModel.createEmptyShoe()))
         }
 
         binding.ivAddShoe.setOnClickListener {
